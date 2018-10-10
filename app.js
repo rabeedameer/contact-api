@@ -6,7 +6,7 @@ const Boom = require('boom');
 
 
 
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/contact');
 
 var app = express();
 
@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 
 
-app.use('/users', usersRouter);
+app.use('/api/v1', usersRouter);
 
 
 app.use((req, res, next)=> {    
