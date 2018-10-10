@@ -1,0 +1,19 @@
+{
+  "name": "contact-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "debug":"DEBUG=contact-api:* node --inspect ./bin/www",
+    "watch":"DEBUG=contact-api:* nodemon --inspect ./bin/www"
+  },
+  "dependencies": {
+    "boom": "^7.2.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "eslint": "^5.6.1",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.18.4"
+  }
+}
