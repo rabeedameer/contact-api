@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "debug":"DEBUG=contact-api:* node --inspect ./bin/www",
-    "watch":"DEBUG=contact-api:* nodemon --inspect ./bin/www"
+    "debug": "DEBUG=contact-api:* node --inspect ./bin/www",
+    "watch": "DEBUG=contact-api:* nodemon --inspect ./bin/www"
   },
   "dependencies": {
     "boom": "^7.2.0",
@@ -13,6 +13,7 @@
     "debug": "~2.6.9",
     "eslint": "^5.6.1",
     "express": "~4.16.0",
+    "mongoose": "^5.3.2",
     "morgan": "~1.9.0",
     "nodemon": "^1.18.4"
   }
