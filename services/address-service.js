@@ -1,28 +1,27 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/contact-api' ,{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/contact-api',{ useNewUrlParser: true });
 
 
 const db = mongoose.connection;
-const Contact = require('../models/contact');
+const Address = require('../models/address');
 
 
 db.on('error', console.error);
 
-class ContactService {
+class AddressService {
     static async create(data){
-        const contact = new Contact(data);
+        const address = new Address(data);
         
-        return await contact.save(); 
+        return await address.save(); 
     }
 
     static async retrieve(id){
         let data;
         if (id){
-            data = await Contact.findById(id)
-            .populate('address')
+            data = await Address.findById(id)
             .exec();
         }else{
-            data = await Contact.find().exec();
+            data = await Address.find().exec();
         }
         if(!data){
             throw new Error('Sorry!! can not retrieve data');
@@ -31,7 +30,7 @@ class ContactService {
     }
 
     static async update(id, data){
-        const updated = await Contact.findByIdAndUpdate(id, data, {
+        const updated = await Address.findByIdAndUpdate(id, data, {
             new: true,
             runValidators: true
         });
@@ -42,7 +41,7 @@ class ContactService {
     }
 
     static async delete(id){
-        const deleted = await Contact.findByIdAndRemove(id);
+        const deleted = await Address.findOneAndDelete(id);
         if(!deleted){
             throw new Error('Failed deleting data!');
         }
@@ -52,4 +51,4 @@ class ContactService {
 }
 
 
-module.exports = ContactService;
+module.exports = AddressService;

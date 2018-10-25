@@ -1,19 +1,26 @@
 const mongoose = require('mongoose');
-    
-    const ContactSchema = new mongoose.Schema({
-        name : {
-            type : 
-                {
-                    first: String,
-                    last: String
-                },
-            required : true
-        },
-        address: String,
-        phoneNumber: [String],
-        birthDate : Date
-       });
+const idValidator = require('mongoose-id-validator');
+const {Schema} = mongoose;
+
+const NameSchema = require('./name-schema.js');
+
+const ContactSchema = new Schema({
+  name: {
+    type: NameSchema,
+    required: true
+  },
+  phone_number: [String],
+  emails: [String],
+  date_of_birth : Date,
+}); 
+
+ContactSchema.virtual('addresses',{
+  ref:'Address',
+  localField:'_id',
+foreignField:'contact'
+});
 
 
+ContactSchema.plugin(idValidator);
 
 module.exports = mongoose.model('Contact', ContactSchema);
