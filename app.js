@@ -6,8 +6,9 @@ const Boom = require('boom');
 
 
 
-var contactRouter = require('./routes/contacts');
-var addressRouter = require('./routes/addresses');
+const contactRouter = require('./routes/contacts');
+const addressRouter = require('./routes/addresses');
+const userRouter = require('./routes/users');
 var app = express();
 
 app.use(logger('dev'));
@@ -17,8 +18,9 @@ app.use(cookieParser());
 
 
 
-app.use('/api/v1/contact', contactRouter);
+app.use('/api/v1/contacts', contactRouter);
 app.use('/api/v1/address', addressRouter);
+app.use('/api/v1/users', userRouter);
 
 
 app.use((req, res, next)=> {    
